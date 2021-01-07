@@ -1,24 +1,61 @@
-# README
+# DB設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users table
 
-Things you may want to cover:
+| Column                  | Type                | Options                 |
+|-------------------------|---------------------|-------------------------|
+| email                   | string              | null:false unique:true  |
+| encrypted_password      | string              | null: false             |
+| family_name             | string              | null: false             |
+| last_name               | string              | null: false             |
+| family_name_kana        | string              | null: false             |
+| last_name_kana          | string              | null: false             |
+| birthday                | date                | null: false             |
 
-* Ruby version
+### Association
+has_many :items
+has_many :orders
 
-* System dependencies
+## items table
 
-* Configuration
+| Column             | Type                | Options                 |
+|--------------------|---------------------|-------------------------|
+| title              | string              | null: false             |
+| explanation        | text                | null: false             |
+| category_id        | integer             | null: false             |
+| status_id          | integer             | null: false             |
+| shipping_cost_id   | integer             | null: false             |
+| delivery_source_id | integer             | null: false             |
+| preparation_day_id | integer             | null: false             |
+| selling_price      | integer             | null: false             |
+| user_id            | integer             | foreign_key: true       |
 
-* Database creation
+### Association
+belongs_to :user
+has_one :order
 
-* Database initialization
+## purchases table
 
-* How to run the test suite
+| Column             | Type                | Options                 |
+|--------------------|---------------------|-------------------------|
+| postal_code        | string              | null: false             |
+| prefecture_id      | integer             | null: false             |
+| city               | string              | null: false             |
+| address            | string              | null: false             |
+| building_name      | string              |                         |
+| phone_number       | string              | null: false             |
+| order_id           | integer             | foreign_key: true       |
 
-* Services (job queues, cache servers, search engines, etc.)
+### Association
+has_one :order
 
-* Deployment instructions
+## orders table
+| Column             | Type                | Options                 |
+|--------------------|---------------------|-------------------------|
+| user_id            | integer             | foreign_key: true       |
+| item_id            | integer             | foreign_key: true       |
 
-* ...
+### Association
+belongs_to :user
+belongs_to :item
+has_one :purchase
