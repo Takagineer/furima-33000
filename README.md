@@ -26,7 +26,8 @@ has_one :id
 | shipping_cost_id   | integer             | null: false             |
 | delivery_source_id | integer             | null: false             |
 | preparation_day_id | integer             | null: false             |
-| selling_price      | string              | null: false             |
+| selling_price      | integer             | null: false             |
+| user_id            | integer             | null: false             |
 
 ### Association
 belongs_to :user
@@ -38,15 +39,14 @@ has_one :id
 | Column             | Type                | Options                 |
 |--------------------|---------------------|-------------------------|
 | postal_code        | string              | null: false             |
-| prefecture         | string              |                         |
-| city               | string              |                         |
-| address            | string              |                         |
+| prefecture         | string              | null: false             |
+| city               | string              | null: false             |
+| address            | string              | null: false             |
 | building_name      | string              |                         |
 | phone_number       | string              | null: false             |
 
 ### Association
-belongs_to :user
-belongs_to :item
+
 
 ## id table
 | Column             | Type                | Options                 |
