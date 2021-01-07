@@ -4,8 +4,7 @@
 
 | Column                  | Type                | Options                 |
 |-------------------------|---------------------|-------------------------|
-| email                   | string              | unique:true             |
-| password                | string              | null: false             |
+| email                   | string              | null:false unique:true  |
 | encrypted_password      | string              | null: false             |
 | family_name             | string              | null: false             |
 | last_name               | string              | null: false             |
@@ -45,10 +44,10 @@ has_one :id
 | address            | string              | null: false             |
 | building_name      | string              |                         |
 | phone_number       | string              | null: false             |
-| item_id            | integer             | foreign_key: true       |
+| id_id              | integer             | foreign_key: true       |
 
 ### Association
-has_one :item
+has_one :id
 
 ## ids table
 | Column             | Type                | Options                 |
@@ -59,4 +58,4 @@ has_one :item
 ### Association
 belongs_to :user
 belongs_to :item
-belongs_to :purchase
+has_one :purchase
