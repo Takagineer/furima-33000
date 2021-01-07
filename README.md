@@ -4,6 +4,8 @@
 
 | Column                  | Type                | Options                 |
 |-------------------------|---------------------|-------------------------|
+| email                   | string              | null: false             |
+| password                | string              | null: false             |
 | family_name             | string              | null: false             |
 | last_name               | string              | null: false             |
 | family_name_kana        | string              | null: false             |
@@ -12,8 +14,7 @@
 
 ### Association
 has_many :items
-has_many :purchases
-has_one :id
+has_many :ids
 
 ## items table
 
@@ -31,10 +32,9 @@ has_one :id
 
 ### Association
 belongs_to :user
-has_one :purchase
 has_one :id
 
-## purchases table
+## address table
 
 | Column             | Type                | Options                 |
 |--------------------|---------------------|-------------------------|
@@ -44,16 +44,17 @@ has_one :id
 | address            | string              | null: false             |
 | building_name      | string              |                         |
 | phone_number       | string              | null: false             |
+| item_id            | integer             | null: false             |
 
 ### Association
-
+has_one :item
 
 ## id table
 | Column             | Type                | Options                 |
 |--------------------|---------------------|-------------------------|
-| user_id            | string              | null: false             |
-| item_id            | string              | null: false             |                         
+| user_id            | integer             | null: false             |
+| item_id            | integer             | null: false             |                         
 
 ### Association
-has_one :user
-has_one :item
+belongs_to :user
+belongs_to :item
