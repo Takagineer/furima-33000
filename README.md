@@ -4,13 +4,14 @@
 
 | Column                  | Type                | Options                 |
 |-------------------------|---------------------|-------------------------|
-| email                   | string              | null: false             |
+| email                   | string              | unique:true             |
 | password                | string              | null: false             |
+| encrypted_password      | string              | null: false             |
 | family_name             | string              | null: false             |
 | last_name               | string              | null: false             |
 | family_name_kana        | string              | null: false             |
 | last_name_kana          | string              | null: false             |
-| birthday                | DATE                | null: false             |
+| birthday                | date                | null: false             |
 
 ### Association
 has_many :items
@@ -28,13 +29,13 @@ has_many :ids
 | delivery_source_id | integer             | null: false             |
 | preparation_day_id | integer             | null: false             |
 | selling_price      | integer             | null: false             |
-| user_id            | integer             | null: false             |
+| user_id            | integer             | foreign_key: true       |
 
 ### Association
 belongs_to :user
 has_one :id
 
-## address table
+## purchases table
 
 | Column             | Type                | Options                 |
 |--------------------|---------------------|-------------------------|
@@ -44,17 +45,18 @@ has_one :id
 | address            | string              | null: false             |
 | building_name      | string              |                         |
 | phone_number       | string              | null: false             |
-| item_id            | integer             | null: false             |
+| item_id            | integer             | foreign_key: true       |
 
 ### Association
 has_one :item
 
-## id table
+## ids table
 | Column             | Type                | Options                 |
 |--------------------|---------------------|-------------------------|
-| user_id            | integer             | null: false             |
-| item_id            | integer             | null: false             |                         
+| user_id            | integer             | foreign_key: true       |
+| item_id            | integer             | foreign_key: true       |
 
 ### Association
 belongs_to :user
 belongs_to :item
+belongs_to :purchase
