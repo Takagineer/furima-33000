@@ -14,7 +14,7 @@
 
 ### Association
 has_many :items
-has_many :ids
+has_many :orders
 
 ## items table
 
@@ -32,14 +32,14 @@ has_many :ids
 
 ### Association
 belongs_to :user
-has_one :id
+has_one :order
 
 ## purchases table
 
 | Column             | Type                | Options                 |
 |--------------------|---------------------|-------------------------|
 | postal_code        | string              | null: false             |
-| prefecture         | string              | null: false             |
+| prefecture_id      | integer             | null: false             |
 | city               | string              | null: false             |
 | address            | string              | null: false             |
 | building_name      | string              |                         |
@@ -47,9 +47,9 @@ has_one :id
 | id_id              | integer             | foreign_key: true       |
 
 ### Association
-has_one :id
+has_one :order
 
-## ids table
+## orders table
 | Column             | Type                | Options                 |
 |--------------------|---------------------|-------------------------|
 | user_id            | integer             | foreign_key: true       |
