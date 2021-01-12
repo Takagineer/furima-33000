@@ -54,6 +54,13 @@ RSpec.describe User, type: :model do
       @user.password_confirmation = ""
       @user.valid?
       expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
+   end
+
+   it "パスワードと確認用は一致すること" do
+    @user.password = "111iii"
+    @user.password_confirmation = "222iii"
+    @user.valid?
+    expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
  end
 
  end
