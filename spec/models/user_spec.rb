@@ -11,7 +11,6 @@ RSpec.describe User, type: :model do
     it 'nickname,email,password,family_name,last_name,family_name_kana,last_name_kana,birthdayが記入されていれば登録できる' do
     @user.save
     @user.valid?
-    binding.pry
     end
     
   end
