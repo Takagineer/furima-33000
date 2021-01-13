@@ -12,11 +12,13 @@ RSpec.describe User, type: :model do
       expect(@user.errors.full_messages).to include "Nickname can't be blank"
    end
 
+  describe 'ユーザー登録ができない時' do
    it "emailが空だと登録できない" do
       @user.email = ""
       @user.valid?
       expect(@user.errors.full_messages).to include "Email can't be blank"
    end
+  end
 
    it "emailにおける一意性の担保" do
       @user.save
@@ -44,11 +46,13 @@ RSpec.describe User, type: :model do
       expect(@user.errors.full_messages).to include("Password is too short (minimum is 6 characters)")
  end
 
+  describe 'ユーザー登録ができない時' do 
    it "パスワードが数字のみでは登録できないこと" do
       @user.password = "111111"
       @user.valid?
       expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
    end
+  
 
    it "パスワードがアルファベットのみでは登録できないこと" do
       @user.password = "aaaaaa"
@@ -61,7 +65,8 @@ RSpec.describe User, type: :model do
       @user.valid?
       expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
    end
-
+  end
+  
    it "パスワードは２回入力すること" do
       @user.password = "111iii"
       @user.password_confirmation = ""
