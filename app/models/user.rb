@@ -8,7 +8,7 @@ class User < ApplicationRecord
 
     validates :nickname           
     validates :email
-    VALID_PASSWORD_REGEX =/\A(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[\d])\z/  
+    VALID_PASSWORD_REGEX =/\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i
     validates :password, length:{ minimum: 6}, format: { with: VALID_PASSWORD_REGEX}
     validates :birthday           
 

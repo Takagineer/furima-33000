@@ -6,6 +6,16 @@ RSpec.describe User, type: :model do
   end
 
  describe "ユーザー新規登録" do
+
+  context 'ユーザー登録ができる時' do
+    it 'nickname,email,password,family_name,last_name,family_name_kana,last_name_kana,birthdayが記入されていれば登録できる' do
+    @user.save
+    @user.valid?
+    binding.pry
+    end
+    
+  end
+
   context 'ユーザー登録ができない時' do
   it "nicknameが空だと登録できない" do
       @user.nickname = ""
