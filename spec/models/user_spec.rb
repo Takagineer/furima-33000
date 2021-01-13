@@ -51,10 +51,16 @@ RSpec.describe User, type: :model do
    end
 
    it "パスワードがアルファベットのみでは登録できないこと" do
-    @user.password = "aaaaaa"
-    @user.valid?
-    expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
- end
+      @user.password = "aaaaaa"
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
+   end
+
+   it "パスワードが全角では登録できないこと" do
+      @user.password = "aaa１１１"
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
+   end
 
    it "パスワードは２回入力すること" do
       @user.password = "111iii"
