@@ -94,8 +94,13 @@ RSpec.describe User, type: :model do
       @user.family_name = "yamada"
       @user.valid?
       expect(@user.errors.full_messages).to include("Family name is invalid")
-      
- end
+   end
+
+   it "family_name_kanaは入力必須であること" do
+      @user.family_name_kana = ""
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Family name kana can't be blank")
+   end
 
  end
    
