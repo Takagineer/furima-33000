@@ -63,7 +63,14 @@ RSpec.describe User, type: :model do
       expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
    end
 
-   it "ユーザー本名は苗字と名前が必須であること" do
+   it "ユーザー本名は苗字が必須であること" do
+      @user.family_name = ""
+      @user.last_name = "田仲"
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Family name can't be blank")
+   end
+   
+   it "ユーザー本名は名前が必須であること" do
       @user.family_name = "田中"
       @user.last_name = ""
       @user.valid?
