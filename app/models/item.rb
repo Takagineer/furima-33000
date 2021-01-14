@@ -1,5 +1,8 @@
 class Item < ApplicationRecord
 
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to_active_hash :genre
+
   with_options presence: true do
 
   validates :title
@@ -13,5 +16,6 @@ class Item < ApplicationRecord
   validates :user_id
 
   has_one_attached :image
+  belongs_to_active_hash :genre
 
 end
