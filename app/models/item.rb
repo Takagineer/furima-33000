@@ -6,15 +6,8 @@ class Item < ApplicationRecord
 
   with_options presence: true do
 
-    validates :title
-    validates :explanation
-    validates :category_id
-    validates :status_id
-    validates :shipping_cost_id
-    validates :delivery_source_id
-    validates :preparation_day_id
-    validates :selling_price
-    validates :user_id
+    validates :title, :explanation, :category_id, :status_id, :shipping_cost_id, :delivery_source_id, :preparation_day_id, :selling_price, :user_id
+    validates :title, :explanation, :category_id, :status_id, :shipping_cost_id, :delivery_source_id, :preparation_day_id, :selling_price, numericality: { other_than: 1}
   end
   
   
