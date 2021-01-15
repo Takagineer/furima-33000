@@ -11,7 +11,6 @@ RSpec.describe Item, type: :model do
       it '全項目入力されていれば保存できる' do
         @item.save
         @item.valid?
-        binding.pry
       end
     end
 

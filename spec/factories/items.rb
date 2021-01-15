@@ -9,5 +9,6 @@ FactoryBot.define do
     delivery_source_id    {"14"}
     preparation_day_id    {"2"}
     selling_price         {"50000"}
+    user_id               {"100"}
   end
 end
