@@ -59,7 +59,7 @@ RSpec.describe Item, type: :model do
       end
 
       it '価格についての情報が必須であること' do
-        @item.selling_price = ""
+        @item.selling_price = "1"
         @item.valid?
         expect(@item.errors.full_messages).to include "Selling price can't be blank"
       end
