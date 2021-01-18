@@ -10,5 +10,5 @@ class Item < ApplicationRecord
   end
   
   
-
+  validates_inclusion_of :selling_price, in: 300..9_999_999
 end
