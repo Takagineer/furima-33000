@@ -70,6 +70,12 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include "Selling price is not included in the list"
       end
 
+      it '価格を全角数字で入力した場合' do
+        @item.selling_price = "５００００"
+        @item.valid?
+        expect(@item.errors.full_messages).to include "Selling price is not included in the list"
+      end
+
     end
   end
 end
