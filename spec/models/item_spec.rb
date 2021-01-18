@@ -58,8 +58,8 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include "Preparation day must be other than 1"
       end
 
-      it '価格が300以下の時' do
-        @item.selling_price = "10"
+      it '価格が299以下の時' do
+        @item.selling_price = "299"
         @item.valid?
         expect(@item.errors.full_messages).to include "Selling price is not included in the list"
       end
