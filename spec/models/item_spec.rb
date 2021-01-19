@@ -73,7 +73,12 @@ RSpec.describe Item, type: :model do
         @item.selling_price = "５００００"
         @item.valid?
         expect(@item.errors.full_messages).to include "Selling price is not included in the list"
-        
+      end
+
+      it '商品の画像が必須であること' do
+          @item.image = nil
+          @item.valid?
+          expect(@item.errors.full_messages).to include "Image can't be blank"
       end
 
     end
