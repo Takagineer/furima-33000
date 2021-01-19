@@ -9,8 +9,7 @@ RSpec.describe Item, type: :model do
     # 正常系テストコード
     context "商品出品できる時" do
       it '全項目入力されていれば保存できる' do
-        @item.save
-        @item.valid?
+        expect(@item).to be_valid
       end
     end
 
@@ -74,6 +73,7 @@ RSpec.describe Item, type: :model do
         @item.selling_price = "５００００"
         @item.valid?
         expect(@item.errors.full_messages).to include "Selling price is not included in the list"
+        
       end
 
     end
