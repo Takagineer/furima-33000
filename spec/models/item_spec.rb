@@ -9,7 +9,7 @@ RSpec.describe Item, type: :model do
     # 正常系テストコード
     context "商品出品できる時" do
       it '全項目入力されていれば保存できる' do
-        expect(@item).to be_valid
+        expect(@item.valid?).to eq true
       end
     end
 
