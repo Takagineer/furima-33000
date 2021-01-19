@@ -9,8 +9,7 @@ RSpec.describe User, type: :model do
 
   context 'ユーザー登録ができる時' do
     it 'nickname,email,password,family_name,last_name,family_name_kana,last_name_kana,birthdayが記入されていれば登録できる' do
-    @user.save
-    @user.valid?
+      expect(@user.valid?).to eq true
     end
     
   end
