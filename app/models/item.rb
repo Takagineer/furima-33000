@@ -3,8 +3,8 @@ class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category
   belongs_to :shipping_cost
-  belongs_to :deliverysource
-  belongs_to :preparationday
+  belongs_to :delivery_source
+  belongs_to :preparation_day
   belongs_to :status
 
   has_one_attached :image
