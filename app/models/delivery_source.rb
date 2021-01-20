@@ -1,4 +1,4 @@
-class Deliverysource < ActiveHash::Base
+class DeliverySource < ActiveHash::Base
 
 
   self.data = [
