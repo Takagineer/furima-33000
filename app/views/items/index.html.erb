@@ -1,4 +1,5 @@
 <%= render "shared/header" %>
+<%# <% console %> 
 <div class='main'>
 
   <%# 画面上部の「人生を変えるフリマアプリ」帯部分 %>
@@ -127,14 +128,13 @@
     <ul class='item-lists'>
 
 
-      <% if @items != nil then %>
+      <% if @items.present? then %>
         <li class='list'>
           <%= link_to "#" do %>
 
 
           <% @items.each do |item| %>
             <div class='item-img-content'>
-              <%#= image_tag item.image, class: "item-img" %>
               <%= image_tag item.image, class: "item-img" %>
               <%# 商品が売れていればsold outを表示しましょう %>
               <div class='sold-out'>
