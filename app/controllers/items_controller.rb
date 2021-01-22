@@ -1,5 +1,8 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
+  # before_action :move_to_index, only: [:edit]
+  # edit内にif分を記述しない時
+
   def index
     @items = Item.all.order("created_at DESC")
   end
@@ -23,6 +26,10 @@ class ItemsController < ApplicationController
 
  def edit
   @item = Item.find(params[:id])
+  unless current_user == @item.user
+    redirect_to root_path
+  end
+  
  end
 
  def update
@@ -39,4 +46,12 @@ class ItemsController < ApplicationController
  def item_params
   params.require(:item).permit(:title,:explanation,:category_id,:status_id,:shipping_cost_id,:delivery_source_id,:preparation_day_id,:selling_price, :image).merge(user_id: current_user.id)
  end
+
+#  def move_to_index
+#   @item = Item.find(params[:id])
+#   unless current_user == @item.user
+#     redirect_to root_path
+#   end
+#  end
+# 使いまわせるメソッドは何度も使い回すこと
 end
