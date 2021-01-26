@@ -14,8 +14,9 @@ class PurchaseOrder
   end
 
   def save
-    Purchase.create(postal_code: postal_code, prefecture_id: prefecture_id, city: city, address: address, building_name: building_name, phone_number: phone_number, order_id: order_id)
     Order.create(user_id: user_id,item_id: item_id)
+    Purchase.create(postal_code: postal_code, prefecture_id: prefecture_id, city: city, address: address, building_name: building_name, phone_number: phone_number, order_id: order_id)
+
   end
 end
 
