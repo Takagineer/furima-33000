@@ -11,7 +11,15 @@ RSpec.describe PurchaseOrder, type: :model do
       it "全項目入力されていれば購入できる" do
         expect(@purchase_order.valid?).to eq true
       end
+
+      it "building_nameが記述されていなくても保存できる" do
+        @purchase_order.building_name = ""
+        @purchase_order.valid?
+        expect(@purchase_order.valid?).to eq true
+      end
     end
+
+
   
     # 異常系テストコード
     context "商品購入できない時" do
