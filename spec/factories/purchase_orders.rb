@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :purchase_order do
-    association :item
 
-    postal_code        {123-4567}
+
+    postal_code        {"123-4567"}
     prefecture_id      {18}
     city               {"東京都"}
     address            {"新宿区"}
