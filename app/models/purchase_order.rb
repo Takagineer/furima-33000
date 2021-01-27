@@ -3,11 +3,11 @@ class PurchaseOrder
   attr_accessor :postal_code, :prefecture_id, :city, :address, :building_name, :phone_number, :order_id, :user_id, :item_id
 
   with_options presence: true do
-    validates :postal_code, format: { with: /\A\d{3}[-]\d{4}\z/, message: "郵便番号エラー"}
-    validates :prefecture_id, numericality: { other_than: 1, message: '県指定'}
-    validates :city, format: { with: /\A[ぁ-んァ-ン一-龥々]/, message: "町名記入"}
-    validates :address, format: { with: /\A[ぁ-んァ-ン一-龥々]/, message: "住所記入"}
-    validates :phone_number, format: { with: /\A\d{11}\z/, message: "電話番号を記入"}
+    validates :postal_code, format: { with: /\A\d{3}[-]\d{4}\z/, message: "Postal code can't be blank"}
+    validates :prefecture_id, numericality: { other_than: 1, message: 'Prefecture Select'}
+    validates :city, format: { with: /\A[ぁ-んァ-ン一-龥々]/, message: "City can't be blank"}
+    validates :address, format: { with: /\A[ぁ-んァ-ン一-龥々]/, message: "Address can't be blank"}
+    validates :phone_number, format: { with: /\A\d{11}\z/, message: "Phone number input only number"}
     validates :user_id, presence: true
     validates :item_id, presence: true
   end
