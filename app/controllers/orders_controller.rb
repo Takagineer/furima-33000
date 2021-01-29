@@ -6,6 +6,7 @@ class OrdersController < ApplicationController
 
 
   def create
+    binding.pry
     @purchase_order = PurchaseOrder.new(purchase_order_params)
      if @purchase_order.valid?
           @purchase_order.save
@@ -16,9 +17,9 @@ class OrdersController < ApplicationController
      end
   end
 
-  private  
+  private
    def purchase_order_params
-    params.require(:purchase_order).permit(:postal_code, :prefecture_id, :city, :address, :building_name, :phone_number, :user_id, :item_id).merge(user_id: current_user.id, item_id: Item.find(params[:item_id]).id)
+    params.require(:purchase_order).permit(:postal_code, :prefecture_id, :city, :address, :building_name, :phone_number, :user_id, :item_id).merge(user_id: current_user.id, item_id: Item.find(params[:item_id]).id, token: params[:token])
   end
 end
 
