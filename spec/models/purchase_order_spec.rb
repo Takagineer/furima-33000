@@ -29,28 +29,34 @@ RSpec.describe PurchaseOrder, type: :model do
         expect(@purchase_order.errors.full_messages).to include "Postal code can't be blank"
       end
 
-      it "県の指定があること" do
+      it "県の指定があるが、県以外を指定している時" do
         @purchase_order.prefecture_id = 1
         @purchase_order.valid?
         expect(@purchase_order.errors.full_messages).to include "Prefecture Select"
       end
 
-      it "Cityの記述がされていること" do
+      it "Cityの記述がない時" do
         @purchase_order.city = ""
         @purchase_order.valid?
         expect(@purchase_order.errors.full_messages).to include "City can't be blank"
       end
 
-      it "addressの記述がされていること" do
+      it "addressの記述がない時" do
         @purchase_order.address = ""
         @purchase_order.valid?
         expect(@purchase_order.errors.full_messages).to include "Address can't be blank"
       end
 
-      it "phone_numberの記述がされていること" do
+      it "phone_numberの記述がない時" do
         @purchase_order.phone_number = ""
         @purchase_order.valid?
         expect(@purchase_order.errors.full_messages).to include "Phone number can't be blank"
+      end
+
+      it "tokenがない時" do
+        @purchase_order.token = ""
+        @purchase_order.valid?
+        expect(@purchase_order.errors.full_messages).to include "Token can't be blank"
       end
     end
   

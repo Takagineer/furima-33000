@@ -11,6 +11,7 @@ FactoryBot.define do
     order_id           {90}
     user_id            {120}
     item_id            {150}
+    token              {"tok_abcdefghijk00000000000000000"}
     
   end
 end
