@@ -10,6 +10,7 @@ class PurchaseOrder
     validates :phone_number, format: { with: /\A\d{11}\z/, message: "Phone number input only number"}
     validates :user_id, presence: true
     validates :item_id, presence: true
+    validates :token
   end
 
   def save
