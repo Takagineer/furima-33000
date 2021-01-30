@@ -24,7 +24,13 @@ RSpec.describe PurchaseOrder, type: :model do
     # 異常系テストコード
     context "商品購入できない時" do
       it "郵便番号が必須であること" do
-        @purchase_order.postal_code = "1"
+        @purchase_order.postal_code = ""
+        @purchase_order.valid?
+        expect(@purchase_order.errors.full_messages).to include "Postal code can't be blank"
+      end
+
+      it "郵便番号にハイフンが必須であること" do
+        @purchase_order.postal_code = "1234567"
         @purchase_order.valid?
         expect(@purchase_order.errors.full_messages).to include "Postal code can't be blank"
       end
@@ -51,6 +57,19 @@ RSpec.describe PurchaseOrder, type: :model do
         @purchase_order.phone_number = ""
         @purchase_order.valid?
         expect(@purchase_order.errors.full_messages).to include "Phone number can't be blank"
+      end
+
+      it "phone_numberの記述が記述が12字以上の時" do
+        @purchase_order.phone_number = 000000000000
+        @purchase_order.valid?
+        expect(@purchase_order.errors.full_messages).to include "Phone number Phone number input only number"
+      end
+
+      it "phone_numberの記述が文字数字混入の時" do
+        @purchase_order.phone_number = "0000000000あ"
+        @purchase_order.valid?
+        binding.pry
+        expect(@purchase_order.errors.full_messages).to include "Phone number Phone number input only number"
       end
 
       it "tokenがない時" do
