@@ -58,6 +58,18 @@ RSpec.describe PurchaseOrder, type: :model do
         @purchase_order.valid?
         expect(@purchase_order.errors.full_messages).to include "Token can't be blank"
       end
+
+      it "user_idがない時" do
+        @purchase_order.user_id = ""
+        @purchase_order.valid?
+        expect(@purchase_order.errors.full_messages).to include "User can't be blank"
+      end
+
+      it "item_idがない時" do
+        @purchase_order.item_id = ""
+        @purchase_order.valid?
+        expect(@purchase_order.errors.full_messages).to include "Item can't be blank"
+      end
     end
   
   end

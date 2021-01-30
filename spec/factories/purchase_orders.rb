@@ -8,7 +8,7 @@ FactoryBot.define do
     address            {"新宿区"}
     building_name      {"柳ビル"}
     phone_number       {"09012345678"}
-    order_id           {90}
+
     user_id            {120}
     item_id            {150}
     token              {"tok_abcdefghijk00000000000000000"}
