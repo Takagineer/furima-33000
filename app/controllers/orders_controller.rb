@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
   before_action :move_to_index, only:[:index]
+  before_action :authenticate_user!, only:[:index]
 
   def index
     @purchase_order = PurchaseOrder.new
