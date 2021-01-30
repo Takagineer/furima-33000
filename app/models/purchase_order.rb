@@ -8,8 +8,8 @@ class PurchaseOrder
     validates :city, format: { with: /\A[ぁ-んァ-ン一-龥々]/, message: "City can't be blank"}
     validates :address, format: { with: /\A[ぁ-んァ-ン一-龥々]/, message: "Address can't be blank"}
     validates :phone_number, format: { with: /\A\d{11}\z/, message: "Phone number input only number"}
-    validates :user_id, presence: true
-    validates :item_id, presence: true
+    validates :user_id
+    validates :item_id
     validates :token
   end
 
