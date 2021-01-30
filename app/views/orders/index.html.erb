@@ -13,7 +13,7 @@
           <%= @purchase_orders.title %>
         </h2>
         <div class='buy-item-price'>
-          <p class='item-price-text'>¥<%= "999,999,999" %></p> 
+          <p class='item-price-text'>¥<%= @purchase_orders.selling_price %></p> 
           <p class='item-price-sub-text'><%= @purchase_orders.shipping_cost.name %></p>
         </div>
       </div>

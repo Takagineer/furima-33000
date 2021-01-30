@@ -11,6 +11,7 @@ class OrdersController < ApplicationController
 
   def create
     @purchase_order = PurchaseOrder.new(purchase_order_params)
+
       if @purchase_order.valid?
           pay_item
           @purchase_order.save
@@ -41,7 +42,7 @@ class OrdersController < ApplicationController
     end
 
     def order_generate
-      @purchase_orders = Item.find(params[:id])
+      @purchase_orders = Item.find(params[:item_id])
     end
 
   end
