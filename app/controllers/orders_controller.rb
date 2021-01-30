@@ -1,16 +1,16 @@
 class OrdersController < ApplicationController
   before_action :move_to_index, only:[:index]
   before_action :authenticate_user!, only:[:index]
+  before_action :order_generate, only:[:index, :create]
 
   def index
     @purchase_order = PurchaseOrder.new
-    @purchase_orders = Item.find(params[:item_id])
+
   end
 
 
   def create
     @purchase_order = PurchaseOrder.new(purchase_order_params)
-    @purchase_orders = Item.find(params[:item_id]) 
       if @purchase_order.valid?
           pay_item
           @purchase_order.save
@@ -39,5 +39,10 @@ class OrdersController < ApplicationController
       if current_user == Item.find(params[:item_id]).user
         redirect_to root_path
     end
+
+    def order_generate
+      @purchase_orders = Item.find(params[:id])
+    end
+
   end
 end
