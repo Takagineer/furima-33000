@@ -37,8 +37,9 @@ class OrdersController < ApplicationController
     end
 
     def move_to_index
-      if current_user == Item.find(params[:item_id]).user
+      if current_user == Item.find(params[:item_id]).user || Item.find(params[:item_id]).order.present?
         redirect_to root_path
+        
     end
 
     def order_generate
