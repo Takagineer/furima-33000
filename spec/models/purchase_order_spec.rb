@@ -66,9 +66,8 @@ RSpec.describe PurchaseOrder, type: :model do
       end
 
       it "phone_numberの記述が文字数字混入の時" do
-        @purchase_order.phone_number = "0000000000あ"
+        @purchase_order.phone_number = "1234567890a"
         @purchase_order.valid?
-        binding.pry
         expect(@purchase_order.errors.full_messages).to include "Phone number Phone number input only number"
       end
 

@@ -7,7 +7,7 @@ class PurchaseOrder
     validates :prefecture_id, numericality: { other_than: 1, message: 'Select'}
     validates :city, format: { with: /\A[ぁ-んァ-ン一-龥々]/, message: "City can't be blank"}
     validates :address, format: { with: /\A[ぁ-んァ-ン一-龥々]/, message: "Address can't be blank"}
-    validates :phone_number, format: { with: /\d\d{10,11}\d/, message: "Phone number input only number"}
+    validates :phone_number, format: { with: /\d{10,11}\d/, message: "Phone number input only number"}
     validates :user_id
     validates :item_id
     validates :token
