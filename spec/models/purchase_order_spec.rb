@@ -60,7 +60,7 @@ RSpec.describe PurchaseOrder, type: :model do
       end
 
       it "phone_numberの記述が記述が12字以上の時" do
-        @purchase_order.phone_number = 000000000000
+        @purchase_order.phone_number = "000000000000"
         @purchase_order.valid?
         expect(@purchase_order.errors.full_messages).to include "Phone number Phone number input only number"
       end
