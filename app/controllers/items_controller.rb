@@ -43,9 +43,16 @@ class ItemsController < ApplicationController
   @item = Item.find(params[:id])
  end
 
+<<<<<<< Updated upstream
  def move_to_index
   unless current_user == @item.user
     redirect_to root_path    
+=======
+  def move_to_index
+    if current_user != @item.user || @item.order.present?
+       redirect_to root_path
+    end
+>>>>>>> Stashed changes
   end
  end
 end
