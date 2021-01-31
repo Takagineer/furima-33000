@@ -44,13 +44,13 @@ class ItemsController < ApplicationController
     params.require(:item).permit(:title,:explanation,:category_id,:status_id,:shipping_cost_id,:delivery_source_id,:preparation_day_id,:selling_price, :image).merge(user_id: current_user.id)
   end
 
-  def item_generate
+   def item_generate
     @item = Item.find(params[:id])
-  end
+   end
 
   def move_to_index
     if current_user != @item.user || @item.order.present?
-      redirect_to root_path
+       redirect_to root_path
     end
   end
 
