@@ -11,14 +11,12 @@ class OrdersController < ApplicationController
 
   def create
     @purchase_order = PurchaseOrder.new(purchase_order_params)
-
       if @purchase_order.valid?
           pay_item
           @purchase_order.save
           redirect_to root_path
      else
-      @purchase_orders = Item.find(params[:item_id])
-      render :index
+          render :index
      end
   end
 
